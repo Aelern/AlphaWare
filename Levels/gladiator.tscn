@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkc6opih34hrk"]
+
+[ext_resource type="Script" uid="uid://lhirhrjd1w63" path="res://Levels/gladiator.gd" id="1_bbkxi"]
+[ext_resource type="PackedScene" uid="uid://bjrw7v4bjyglh" path="res://Components/RPG Combat Tools/rpg_battle_manager.tscn" id="2_uuy3h"]
+
+[node name="Gladiator" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_bbkxi")
+metadata/_custom_type_script = "uid://dbc1ynackruux"
+
+[node name="RPGBattleManager" parent="." instance=ExtResource("2_uuy3h")]

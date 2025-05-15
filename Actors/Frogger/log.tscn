@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl53u7gcu3t7u"]
+
+[ext_resource type="Script" uid="uid://bt50fvu11soj3" path="res://Actors/Frogger/log.gd" id="1_7vaay"]
+[ext_resource type="Texture2D" uid="uid://cjnpl6evdca7m" path="res://Assets/log.png" id="2_c44dp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krc7g"]
+atlas = ExtResource("2_c44dp")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5iwqp"]
+atlas = ExtResource("2_c44dp")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rcrc"]
+atlas = ExtResource("2_c44dp")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tpe02"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krc7g")
+}],
+"loop": true,
+"name": &"body",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5iwqp")
+}],
+"loop": true,
+"name": &"head",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rcrc")
+}],
+"loop": true,
+"name": &"tail",
+"speed": 5.0
+}]
+
+[node name="Log" type="Node2D"]
+top_level = true
+script = ExtResource("1_7vaay")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tpe02")
+animation = &"body"
+autoplay = "body"

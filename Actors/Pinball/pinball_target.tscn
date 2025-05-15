@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2aqpxs5vs0s4"]
+
+[ext_resource type="Script" uid="uid://coolv4u6elwo5" path="res://Actors/Pinball/pinball_target.gd" id="1_uedx7"]
+[ext_resource type="Texture2D" uid="uid://bt4i2reqnma7" path="res://Assets/pinball_target.png" id="2_dh5tt"]
+[ext_resource type="Script" uid="uid://dhi7jl4m0bqmc" path="res://Components/hitbox_component.gd" id="3_4h63o"]
+[ext_resource type="Script" uid="uid://ccd00snf85m7l" path="res://Components/hurtbox_component.gd" id="4_1fxii"]
+[ext_resource type="Script" uid="uid://cg4ho5drxux2p" path="res://Components/health_component.gd" id="5_gq01b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2t1cq"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1bdp8"]
+radius = 32.0
+
+[node name="PinballTarget" type="StaticBody2D"]
+script = ExtResource("1_uedx7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dh5tt")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_4h63o")
+knockback = 500
+metadata/_custom_type_script = "uid://dhi7jl4m0bqmc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_2t1cq")
+debug_color = Color(0.997056, 0, 0.174189, 0.42)
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4_1fxii")
+metadata/_custom_type_script = "uid://ccd00snf85m7l"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_1bdp8")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("5_gq01b")
+metadata/_custom_type_script = "uid://cg4ho5drxux2p"

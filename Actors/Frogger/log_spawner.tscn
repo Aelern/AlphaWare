@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b18lefm6h0hxy"]
+
+[ext_resource type="Script" uid="uid://dxm87v2vccskn" path="res://Components/spawner_component.gd" id="1_7kunb"]
+[ext_resource type="Script" uid="uid://7fuqf0fhlt6y" path="res://Actors/Frogger/log_spawner.gd" id="1_7sx72"]
+[ext_resource type="PackedScene" uid="uid://bl53u7gcu3t7u" path="res://Actors/Frogger/log.tscn" id="3_rbdw7"]
+
+[node name="LogSpawner" type="Node2D"]
+script = ExtResource("1_7sx72")
+
+[node name="SpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("1_7kunb")
+scene = ExtResource("3_rbdw7")
+metadata/_custom_type_script = "uid://dxm87v2vccskn"
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true

@@ -1,0 +1,109 @@
+[gd_scene load_steps=17 format=3 uid="uid://bk4uiv7obmi6c"]
+
+[ext_resource type="Script" uid="uid://cjuujrcnrxymb" path="res://Actors/Frogger/baby_frog.gd" id="1_dx1er"]
+[ext_resource type="Texture2D" uid="uid://ds6lp50guaxv" path="res://Assets/baby_frog_blue.png" id="2_fu2l2"]
+[ext_resource type="Texture2D" uid="uid://b25byoxyu347" path="res://Assets/baby_frog_green.png" id="3_2wdps"]
+[ext_resource type="Texture2D" uid="uid://hvs6h1rm7b54" path="res://Assets/baby_frog_orange.png" id="4_w5q4s"]
+[ext_resource type="Texture2D" uid="uid://ddy27j04ieo0s" path="res://Assets/baby_frog_pink.png" id="5_kklyt"]
+[ext_resource type="Script" uid="uid://cbpoct75uc7a4" path="res://Components/collectbox_component.gd" id="6_v7n4j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc6bm"]
+atlas = ExtResource("2_fu2l2")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41pvk"]
+atlas = ExtResource("2_fu2l2")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4uho"]
+atlas = ExtResource("3_2wdps")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb6sh"]
+atlas = ExtResource("3_2wdps")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_635u6"]
+atlas = ExtResource("4_w5q4s")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jswn6"]
+atlas = ExtResource("4_w5q4s")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es7d5"]
+atlas = ExtResource("5_kklyt")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0cog"]
+atlas = ExtResource("5_kklyt")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yirob"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc6bm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41pvk")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4uho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb6sh")
+}],
+"loop": true,
+"name": &"green",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_635u6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jswn6")
+}],
+"loop": true,
+"name": &"orange",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_es7d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0cog")
+}],
+"loop": true,
+"name": &"pink",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c3wfm"]
+radius = 16.0
+
+[node name="BabyFrog" type="Node2D"]
+script = ExtResource("1_dx1er")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yirob")
+animation = &"green"
+autoplay = "green"
+frame_progress = 0.0907892
+
+[node name="CollectboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("6_v7n4j")
+metadata/_custom_type_script = "uid://cbpoct75uc7a4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectboxComponent"]
+shape = SubResource("CircleShape2D_c3wfm")
+debug_color = Color(0.666725, 0.511093, 0, 0.42)

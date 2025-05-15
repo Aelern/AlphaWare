@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dclv1t3qo4wir"]
+
+[ext_resource type="Script" uid="uid://dbc1ynackruux" path="res://Worlds/microgame.gd" id="1_gpql1"]
+[ext_resource type="PackedScene" uid="uid://e1mym8owg7vl" path="res://Actors/pinball_ball.tscn" id="2_l2bu8"]
+[ext_resource type="PackedScene" uid="uid://bft0a0iwh6jhn" path="res://Actors/pinball_flipper.tscn" id="3_4lmy0"]
+
+[node name="Pinball" type="Node"]
+script = ExtResource("1_gpql1")
+metadata/_custom_type_script = "uid://dbc1ynackruux"
+
+[node name="PinballBall" parent="." instance=ExtResource("2_l2bu8")]
+position = Vector2(190, 204)
+
+[node name="LeftFlipper" parent="." instance=ExtResource("3_4lmy0")]
+position = Vector2(463, 498)
+rotation = 5.23599
+clockwise = false
+button = "left"
+
+[node name="Arena" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Arena"]
+polygon = PackedVector2Array(453, 489, 111, 457, -1, -5, -57, 11, -21, 549, 459, 551, 447, 513)

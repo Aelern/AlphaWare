@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://kyjpre4ywwgu"]
+
+[ext_resource type="Script" uid="uid://g6ersrp3l7rc" path="res://Actors/Frogger/lily_pad.gd" id="1_yohml"]
+[ext_resource type="Texture2D" uid="uid://b0pgc6yqtjk8x" path="res://Assets/lily_pad.png" id="2_yjwba"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07khs"]
+atlas = ExtResource("2_yjwba")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5w0nu"]
+atlas = ExtResource("2_yjwba")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_11ngp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07khs")
+}],
+"loop": true,
+"name": &"sunk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5w0nu")
+}],
+"loop": true,
+"name": &"surface",
+"speed": 5.0
+}]
+
+[node name="LilyPad" type="Node2D"]
+script = ExtResource("1_yohml")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_11ngp")
+animation = &"surface"
+autoplay = "surface"
+
+[node name="StateTimer" type="Timer" parent="."]
+one_shot = true

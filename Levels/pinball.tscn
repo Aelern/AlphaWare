@@ -1,0 +1,128 @@
+[gd_scene load_steps=8 format=3 uid="uid://dclv1t3qo4wir"]
+
+[ext_resource type="Script" uid="uid://bahixtm75k4mv" path="res://Levels/pinball.gd" id="1_cr81w"]
+[ext_resource type="PackedScene" uid="uid://e1mym8owg7vl" path="res://Actors/Pinball/pinball_ball.tscn" id="2_l2bu8"]
+[ext_resource type="PackedScene" uid="uid://bft0a0iwh6jhn" path="res://Actors/Pinball/pinball_flipper.tscn" id="3_4lmy0"]
+[ext_resource type="PackedScene" uid="uid://celjn3sorthar" path="res://Actors/Pinball/pinball_bumper.tscn" id="4_u6rml"]
+[ext_resource type="Script" uid="uid://dxm87v2vccskn" path="res://Components/spawner_component.gd" id="5_jwn3g"]
+[ext_resource type="PackedScene" uid="uid://c2aqpxs5vs0s4" path="res://Actors/Pinball/pinball_target.tscn" id="5_nqanh"]
+[ext_resource type="Texture2D" uid="uid://c7ncm2nan8wqo" path="res://Assets/ball.png" id="7_jwn3g"]
+
+[node name="Pinball" type="Control"]
+physics_interpolation_mode = 0
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cr81w")
+game_name = "Pinball"
+
+[node name="LeftFlipper" parent="." instance=ExtResource("3_4lmy0")]
+position = Vector2(380, 410.4)
+rotation = -1.0472
+clockwise = false
+button = "left"
+rotation_speed = 1500
+
+[node name="RightFlipper" parent="." instance=ExtResource("3_4lmy0")]
+position = Vector2(484, 410.4)
+rotation = 1.0472
+button = "right"
+rotation_speed = 1500
+
+[node name="Arena" type="StaticBody2D" parent="."]
+position = Vector2(-48, -72)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Arena"]
+position = Vector2(0, -25.6)
+polygon = PackedVector2Array(464, 512, 416, 640, 0, 640, 0, -128, 960, -128, 960, 640, 544, 640, 496, 512, 864, 384, 864, 145.6, 96, 145.6, 96, 384)
+
+[node name="Polygon2D" type="Polygon2D" parent="Arena"]
+position = Vector2(0, -25.6)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(416, 496, 416, 544, 0, 544, 0, 0, 960, 0, 960, 34.0665, 960, 544, 544, 544, 544, 496, 864, 384, 864, 145.6, 96, 145.6, 96, 384)
+
+[node name="Bumpers" type="Node2D" parent="."]
+
+[node name="PinballBumper" parent="Bumpers" instance=ExtResource("4_u6rml")]
+position = Vector2(240, 222.4)
+
+[node name="PinballBumper2" parent="Bumpers" instance=ExtResource("4_u6rml")]
+position = Vector2(624, 222.4)
+
+[node name="PinballBumper3" parent="Bumpers" instance=ExtResource("4_u6rml")]
+position = Vector2(336, 94.4)
+
+[node name="PinballBumper4" parent="Bumpers" instance=ExtResource("4_u6rml")]
+position = Vector2(528, 94.4)
+
+[node name="PinballBumper5" parent="Bumpers" instance=ExtResource("4_u6rml")]
+position = Vector2(720, 144)
+
+[node name="PinballBumper6" parent="Bumpers" instance=ExtResource("4_u6rml")]
+position = Vector2(144, 144)
+
+[node name="Targets" type="Node2D" parent="."]
+
+[node name="PinballTarget" parent="Targets" instance=ExtResource("5_nqanh")]
+position = Vector2(432, 286.4)
+
+[node name="PinballTarget2" parent="Targets" instance=ExtResource("5_nqanh")]
+position = Vector2(432, 118.4)
+
+[node name="PinballTarget3" parent="Targets" instance=ExtResource("5_nqanh")]
+position = Vector2(240, 142.4)
+
+[node name="PinballTarget4" parent="Targets" instance=ExtResource("5_nqanh")]
+position = Vector2(624, 144)
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="PinballSpawner" type="Node2D" parent="."]
+position = Vector2(72, 96)
+script = ExtResource("5_jwn3g")
+scene = ExtResource("2_l2bu8")
+metadata/_custom_type_script = "uid://dxm87v2vccskn"
+
+[node name="LifeIndicator" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 748.0
+offset_top = 392.0
+offset_right = 864.0
+offset_bottom = 424.0
+
+[node name="Label" type="Label" parent="LifeIndicator"]
+layout_mode = 2
+text = "Lives:"
+
+[node name="Life1" type="TextureRect" parent="LifeIndicator"]
+layout_mode = 2
+texture = ExtResource("7_jwn3g")
+stretch_mode = 3
+
+[node name="Life2" type="TextureRect" parent="LifeIndicator"]
+layout_mode = 2
+texture = ExtResource("7_jwn3g")
+stretch_mode = 3
+
+[node name="Life3" type="TextureRect" parent="LifeIndicator"]
+layout_mode = 2
+texture = ExtResource("7_jwn3g")
+stretch_mode = 3
+
+[node name="Buffer" type="Label" parent="LifeIndicator"]
+layout_mode = 2
+
+[node name="TargetCounter" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 390.4
+offset_right = 186.0
+offset_bottom = 422.4
+
+[node name="RemainingLabel" type="Label" parent="TargetCounter"]
+layout_mode = 2
+text = "Targets Remaining:"
+
+[node name="CountLabel" type="Label" parent="TargetCounter"]
+layout_mode = 2

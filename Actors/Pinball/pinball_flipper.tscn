@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bft0a0iwh6jhn"]
+
+[ext_resource type="Script" uid="uid://cumgnhw845r5p" path="res://Actors/Pinball/pinball_flipper.gd" id="1_42fo0"]
+[ext_resource type="Texture2D" uid="uid://bjpc641fd35g7" path="res://Assets/flipper.png" id="2_8fk3h"]
+
+[node name="PinballFlipper" type="CharacterBody2D"]
+script = ExtResource("1_42fo0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 14)
+texture = ExtResource("2_8fk3h")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(4, 38, 8, 0, 7, -4, 5, -7, 1, -9, -1, -9, -5, -7, -7, -4, -8, 1, -4, 38)

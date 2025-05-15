@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2jk0nkayh0sh"]
+
+[ext_resource type="Script" uid="uid://dxm87v2vccskn" path="res://Components/spawner_component.gd" id="1_jn111"]
+[ext_resource type="Script" uid="uid://c7xdc7kau1h5m" path="res://Levels/microgame_manager.gd" id="1_v1dpo"]
+
+[node name="MicrogameManager" type="Node2D"]
+script = ExtResource("1_v1dpo")
+metadata/_custom_type_script = "uid://c7xdc7kau1h5m"
+
+[node name="IntermissionTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="GameSpawner" type="Node2D" parent="."]
+position = Vector2(48, 48)
+script = ExtResource("1_jn111")
+metadata/_custom_type_script = "uid://dxm87v2vccskn"

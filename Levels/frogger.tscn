@@ -1,0 +1,295 @@
+[gd_scene load_steps=13 format=4 uid="uid://4ci7euovtsbn"]
+
+[ext_resource type="Script" uid="uid://bx2vx3ums47xv" path="res://Levels/frogger.gd" id="1_slud4"]
+[ext_resource type="PackedScene" uid="uid://bu5ptc4jt2235" path="res://Objects/frogger_map_manager.tscn" id="2_2jpck"]
+[ext_resource type="Texture2D" uid="uid://cme2t3dxhbxmn" path="res://Assets/frog_terrains.png" id="3_w7ar1"]
+[ext_resource type="Script" uid="uid://dxm87v2vccskn" path="res://Components/spawner_component.gd" id="4_kfjyb"]
+[ext_resource type="PackedScene" uid="uid://cks7slttwoxb2" path="res://Actors/Frogger/purple_car.tscn" id="5_57ysx"]
+[ext_resource type="PackedScene" uid="uid://b18lefm6h0hxy" path="res://Actors/Frogger/log_spawner.tscn" id="5_jy3xf"]
+[ext_resource type="PackedScene" uid="uid://cocituvaj6wnp" path="res://Actors/Frogger/frog.tscn" id="5_ujlhf"]
+[ext_resource type="PackedScene" uid="uid://bk4uiv7obmi6c" path="res://Actors/Frogger/baby_frog.tscn" id="6_2hpnx"]
+[ext_resource type="PackedScene" uid="uid://kyjpre4ywwgu" path="res://Actors/Frogger/lily_pad.tscn" id="6_lxtnt"]
+[ext_resource type="PackedScene" uid="uid://bd7ynsta2rllr" path="res://Actors/Frogger/car_spawner.tscn" id="8_414j2"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kfjyb"]
+texture = ExtResource("3_w7ar1")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ujlhf"]
+tile_size = Vector2i(48, 48)
+sources/0 = SubResource("TileSetAtlasSource_kfjyb")
+
+[node name="Frogger" type="Control" node_paths=PackedStringArray("map_manager")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_slud4")
+map_manager = NodePath("SubViewportContainer/SubViewport/FroggerMapManager")
+metadata/_custom_type_script = "uid://dbc1ynackruux"
+
+[node name="Helper" type="Polygon2D" parent="."]
+visible = false
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 432, 864, 432, 864, 0, 0, 0, 0, -96, 960, -96, 960, 544, -96, 544, -96, -96, 0, -96)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(864, 432)
+render_target_update_mode = 4
+
+[node name="FroggerMapManager" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("terrain_tile_map", "frog_spawner", "lily_pad_folder", "log_spawner_folder", "baby_folder") instance=ExtResource("2_2jpck")]
+terrain_tile_map = NodePath("TerrainTiles")
+frog_spawner = NodePath("../FrogSpawner")
+lily_pad_folder = NodePath("../LilyPads")
+log_spawner_folder = NodePath("../LogSpawners")
+baby_folder = NodePath("../Babies")
+
+[node name="TerrainTiles" type="TileMapLayer" parent="SubViewportContainer/SubViewport/FroggerMapManager"]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAgAAAAAAAAAAAABAAcAAAAAAAAAAAABAAYAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAABAAAAAAAAAAAAAAACAAgAAAAAAAEAAAACAAcAAAAAAAEAAAACAAYAAAAAAAEAAAACAAUAAAAAAAEAAAACAAQAAAAAAAEAAAACAAMAAAAAAAEAAAACAAIAAAAAAAEAAAACAAEAAAAAAAEAAAACAAAAAAAAAAEAAAADAAAAAAAAAAEAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAADAAMAAAAAAAEAAAADAAQAAAAAAAEAAAADAAUAAAAAAAEAAAADAAYAAAAAAAEAAAADAAcAAAAAAAEAAAADAAgAAAAAAAEAAAAEAAgAAAAAAAEAAAAEAAcAAAAAAAEAAAAEAAYAAAAAAAEAAAAEAAUAAAAAAAEAAAAEAAQAAAAAAAEAAAAEAAMAAAAAAAEAAAAEAAIAAAAAAAEAAAAEAAEAAAAAAAEAAAAEAAAAAAAAAAEAAAAFAAAAAAAAAAEAAAAFAAEAAAAAAAEAAAAFAAIAAAAAAAEAAAAFAAMAAAAAAAEAAAAFAAQAAAAAAAEAAAAFAAUAAAAAAAEAAAAFAAYAAAAAAAEAAAAFAAcAAAAAAAEAAAAFAAgAAAAAAAEAAAAGAAgAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAgAAAAAAAEAAAAHAAcAAAAAAAEAAAAHAAYAAAAAAAEAAAAHAAUAAAAAAAEAAAAHAAQAAAAAAAEAAAAHAAMAAAAAAAEAAAAHAAIAAAAAAAEAAAAHAAEAAAAAAAEAAAAHAAAAAAAAAAEAAAAIAAAAAAAAAAEAAAAIAAEAAAAAAAEAAAAIAAIAAAAAAAEAAAAIAAMAAAAAAAEAAAAIAAQAAAAAAAEAAAAIAAUAAAAAAAEAAAAIAAYAAAAAAAEAAAAIAAcAAAAAAAEAAAAIAAgAAAAAAAEAAAAJAAcAAAAAAAEAAAAJAAgAAAAAAAEAAAAJAAYAAAAAAAEAAAAJAAUAAAAAAAEAAAAJAAQAAAAAAAEAAAAJAAMAAAAAAAEAAAAJAAIAAAAAAAEAAAAJAAEAAAAAAAEAAAAJAAAAAAAAAAEAAAAKAAAAAAAAAAEAAAAKAAEAAAAAAAEAAAAKAAIAAAAAAAEAAAAKAAMAAAAAAAEAAAAKAAQAAAAAAAEAAAAKAAUAAAAAAAEAAAAKAAYAAAAAAAEAAAAKAAcAAAAAAAEAAAAKAAgAAAAAAAEAAAALAAgAAAAAAAAAAAALAAcAAAAAAAAAAAALAAYAAAAAAAAAAAALAAUAAAAAAAAAAAALAAQAAAAAAAAAAAALAAMAAAAAAAAAAAALAAIAAAAAAAAAAAALAAEAAAAAAAAAAAALAAAAAAAAAAAAAAARAAgAAAABAAEAAAARAAYAAAABAAEAAAARAAQAAAABAAEAAAARAAIAAAABAAEAAAARAAAAAAABAAEAAAARAAcAAAAAAAAAAAARAAUAAAAAAAAAAAARAAMAAAAAAAAAAAARAAEAAAAAAAAAAAAMAAgAAAABAAAAAAANAAgAAAABAAAAAAAOAAgAAAABAAAAAAAPAAgAAAABAAAAAAAQAAgAAAABAAAAAAAQAAcAAAABAAAAAAAPAAcAAAABAAAAAAAOAAcAAAABAAAAAAANAAcAAAABAAAAAAAMAAcAAAABAAAAAAAMAAYAAAABAAAAAAANAAYAAAABAAAAAAAOAAYAAAABAAAAAAAPAAYAAAABAAAAAAAQAAYAAAABAAAAAAAQAAUAAAABAAAAAAAQAAQAAAABAAAAAAAPAAQAAAABAAAAAAAOAAQAAAABAAAAAAAOAAUAAAABAAAAAAAPAAUAAAABAAAAAAANAAUAAAABAAAAAAAMAAUAAAABAAAAAAAMAAQAAAABAAAAAAANAAQAAAABAAAAAAAOAAMAAAABAAAAAAAPAAMAAAABAAAAAAAQAAMAAAABAAAAAAANAAMAAAABAAAAAAAMAAMAAAABAAAAAAAMAAIAAAABAAAAAAANAAIAAAABAAAAAAAOAAIAAAABAAAAAAAPAAIAAAABAAAAAAAQAAIAAAABAAAAAAAQAAEAAAABAAAAAAAPAAEAAAABAAAAAAAOAAEAAAABAAAAAAANAAEAAAABAAAAAAAMAAEAAAABAAAAAAAMAAAAAAABAAAAAAANAAAAAAABAAAAAAAOAAAAAAABAAAAAAAPAAAAAAABAAAAAAAQAAAAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_ujlhf")
+
+[node name="LilyPads" type="Node" parent="SubViewportContainer/SubViewport"]
+
+[node name="LilyPad" parent="SubViewportContainer/SubViewport/LilyPads" instance=ExtResource("6_lxtnt")]
+position = Vector2(600, 216)
+rotation = 2.53073
+sink_time = 0.8
+start_floating = false
+
+[node name="LilyPad2" parent="SubViewportContainer/SubViewport/LilyPads" instance=ExtResource("6_lxtnt")]
+position = Vector2(600, 168)
+rotation = 4.2586
+surface_time = 4.0
+sink_time = 1.1
+
+[node name="LilyPad3" parent="SubViewportContainer/SubViewport/LilyPads" instance=ExtResource("6_lxtnt")]
+position = Vector2(600, 264)
+rotation = 1.309
+surface_time = 4.1
+sink_time = 1.15
+start_floating = false
+
+[node name="LilyPad4" parent="SubViewportContainer/SubViewport/LilyPads" instance=ExtResource("6_lxtnt")]
+position = Vector2(600, 360)
+rotation = 0.523599
+surface_time = 5.2
+sink_time = 0.45
+rotation_speed = 7
+start_floating = false
+
+[node name="LilyPad5" parent="SubViewportContainer/SubViewport/LilyPads" instance=ExtResource("6_lxtnt")]
+position = Vector2(600, 72)
+rotation = 4.53786
+surface_time = 2.4
+sink_time = 0.9
+rotation_speed = 9
+start_floating = false
+
+[node name="LogSpawners" type="Node" parent="SubViewportContainer/SubViewport"]
+
+[node name="LogSpawner" parent="SubViewportContainer/SubViewport/LogSpawners" instance=ExtResource("5_jy3xf")]
+position = Vector2(648, -24)
+spawn_time = 5.5
+
+[node name="LogSpawner2" parent="SubViewportContainer/SubViewport/LogSpawners" instance=ExtResource("5_jy3xf")]
+position = Vector2(696, 456)
+log_length = 3
+speed = 65
+direction = Vector2(0, -1)
+spawn_time = 5.0
+
+[node name="LogSpawner4" parent="SubViewportContainer/SubViewport/LogSpawners" instance=ExtResource("5_jy3xf")]
+position = Vector2(744, -24)
+log_length = 7
+speed = 45
+spawn_time = 9.7
+
+[node name="LogSpawner3" parent="SubViewportContainer/SubViewport/LogSpawners" instance=ExtResource("5_jy3xf")]
+position = Vector2(792, 456)
+log_length = 2
+speed = 75
+direction = Vector2(0, -1)
+spawn_time = 3.0
+
+[node name="Babies" type="Node" parent="SubViewportContainer/SubViewport"]
+
+[node name="BabyFrog" parent="SubViewportContainer/SubViewport/Babies" instance=ExtResource("6_2hpnx")]
+position = Vector2(840, 72)
+
+[node name="BabyFrog2" parent="SubViewportContainer/SubViewport/Babies" instance=ExtResource("6_2hpnx")]
+position = Vector2(840, 168)
+id = 1
+
+[node name="BabyFrog3" parent="SubViewportContainer/SubViewport/Babies" instance=ExtResource("6_2hpnx")]
+position = Vector2(840, 264)
+id = 2
+
+[node name="BabyFrog4" parent="SubViewportContainer/SubViewport/Babies" instance=ExtResource("6_2hpnx")]
+position = Vector2(840, 360)
+id = 3
+
+[node name="FrogSpawner" type="Node2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(24, 216)
+rotation = 0.785398
+script = ExtResource("4_kfjyb")
+scene = ExtResource("5_ujlhf")
+metadata/_custom_type_script = "uid://dxm87v2vccskn"
+
+[node name="Cars" type="Node" parent="SubViewportContainer/SubViewport"]
+
+[node name="PurpleCar" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(120, 120)
+speed = 50
+direction = Vector2(0, 1)
+
+[node name="PurpleCar4" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(120, 288)
+speed = 50
+direction = Vector2(0, 1)
+
+[node name="PurpleCar5" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(120, 432)
+speed = 50
+direction = Vector2(0, 1)
+
+[node name="PurpleCar3" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(168, 72)
+direction = Vector2(0, 1)
+
+[node name="PurpleCar2" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(168, 288)
+direction = Vector2(0, 1)
+
+[node name="PurpleCar6" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(216, 264)
+speed = 100
+direction = Vector2(0, -1)
+
+[node name="PurpleCar7" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(264, 336)
+speed = 250
+direction = Vector2(0, 1)
+
+[node name="PurpleCar13" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(360, 264)
+speed = 200
+direction = Vector2(0, -1)
+
+[node name="PurpleCar8" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(408, 48)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="PurpleCar9" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(408, 120)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="PurpleCar10" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(408, 192)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="PurpleCar11" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(408, 312)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="PurpleCar12" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(408, 384)
+speed = 80
+direction = Vector2(0, 1)
+
+[node name="PurpleCar14" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(456, 312)
+speed = 170
+direction = Vector2(0, -1)
+
+[node name="PurpleCar15" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(456, 72)
+speed = 170
+direction = Vector2(0, -1)
+
+[node name="PurpleCar16" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(504, 360)
+speed = 400
+direction = Vector2(0, -1)
+
+[node name="PurpleCar17" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("5_57ysx")]
+position = Vector2(504, 288)
+speed = 400
+direction = Vector2(0, -1)
+
+[node name="CarSpawner" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("8_414j2")]
+position = Vector2(120, -24)
+speed = 50
+spawn_time = 3.8
+
+[node name="CarSpawner2" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("8_414j2")]
+position = Vector2(168, -24)
+
+[node name="CarSpawner3" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("8_414j2")]
+position = Vector2(216, 456)
+speed = 100
+direction = Vector2(0, -1)
+spawn_time = 2.0
+
+[node name="CarSpawner4" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("8_414j2")]
+position = Vector2(264, -24)
+speed = 250
+spawn_time = 1.66
+
+[node name="CarSpawner5" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("8_414j2")]
+position = Vector2(360, 456)
+speed = 200
+direction = Vector2(0, -1)
+spawn_time = 2.1
+
+[node name="CarSpawner6" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("8_414j2")]
+position = Vector2(408, -24)
+speed = 80
+spawn_time = 1.8
+
+[node name="CarSpawner10" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("8_414j2")]
+position = Vector2(408, -96)
+speed = 80
+spawn_time = 3.6
+
+[node name="CarSpawner7" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("8_414j2")]
+position = Vector2(456, 456)
+speed = 170
+direction = Vector2(0, -1)
+spawn_time = 1.3
+
+[node name="CarSpawner8" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("8_414j2")]
+position = Vector2(504, 456)
+speed = 400
+direction = Vector2(0, -1)
+spawn_time = 1.86
+
+[node name="CarSpawner9" parent="SubViewportContainer/SubViewport/Cars" instance=ExtResource("8_414j2")]
+position = Vector2(504, 528)
+speed = 400
+direction = Vector2(0, -1)
+spawn_time = 1.86
+
+[node name="LivesLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 816.0
+offset_top = 384.0
+offset_right = 864.0
+offset_bottom = 432.0
+horizontal_alignment = 1
+vertical_alignment = 1

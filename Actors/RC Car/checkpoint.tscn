@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b15ierrepvdmh"]
+
+[ext_resource type="Script" uid="uid://dar28mu487wfs" path="res://Actors/RC Car/checkpoint.gd" id="1_tm47p"]
+[ext_resource type="Script" uid="uid://cbpoct75uc7a4" path="res://Components/collectbox_component.gd" id="2_tm47p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8aow1"]
+radius = 24.3311
+
+[node name="Checkpoint" type="Node2D"]
+script = ExtResource("1_tm47p")
+
+[node name="CollectboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_tm47p")
+metadata/_custom_type_script = "uid://cbpoct75uc7a4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectboxComponent"]
+shape = SubResource("CircleShape2D_8aow1")
+debug_color = Color(0.666725, 0.511093, 0, 0.42)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(48, 0)

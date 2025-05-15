@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://3g0nd0fwuepa"]
+
+[ext_resource type="Script" uid="uid://dsevin4u7nlhc" path="res://Actors/RC Car/rc_goal.gd" id="1_0di1g"]
+[ext_resource type="Texture2D" uid="uid://7vyaj5je4pbl" path="res://Assets/rc_car_goal.png" id="1_wqg6v"]
+[ext_resource type="Script" uid="uid://cbpoct75uc7a4" path="res://Components/collectbox_component.gd" id="3_0di1g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_114e7"]
+size = Vector2(52, 26)
+
+[node name="RcGoal" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_0di1g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wqg6v")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-26, 30, -26, -26, 26, -26, 26, 30, 30, 30, 30, -30, -30, -30, -30, 30)
+
+[node name="CollectboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_0di1g")
+metadata/_custom_type_script = "uid://cbpoct75uc7a4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectboxComponent"]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_114e7")
+debug_color = Color(0.666725, 0.511093, 0, 0.42)

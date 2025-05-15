@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjrw7v4bjyglh"]
+
+[ext_resource type="Script" uid="uid://kh0blbuy8c3x" path="res://Components/RPG Combat Tools/rpg_battle_manager.gd" id="1_hkapq"]
+
+[node name="RPGBattleManager" type="Node"]
+script = ExtResource("1_hkapq")

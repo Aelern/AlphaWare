@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cks7slttwoxb2"]
+
+[ext_resource type="Script" uid="uid://dpo20gtn33lex" path="res://Actors/Frogger/purple_car.gd" id="1_ls88m"]
+[ext_resource type="Texture2D" uid="uid://6sp8r2h1o1pl" path="res://Assets/purple_car.png" id="2_doho4"]
+[ext_resource type="Script" uid="uid://dhi7jl4m0bqmc" path="res://Components/hitbox_component.gd" id="3_wc615"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfn3o"]
+size = Vector2(40, 40)
+
+[node name="PurpleCar" type="StaticBody2D"]
+script = ExtResource("1_ls88m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_doho4")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_wc615")
+damage = 1
+metadata/_custom_type_script = "uid://dhi7jl4m0bqmc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_bfn3o")
+debug_color = Color(0.997056, 0, 0.174189, 0.42)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

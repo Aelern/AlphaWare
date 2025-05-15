@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu5ptc4jt2235"]
+
+[ext_resource type="Script" uid="uid://dbi6ji3ior634" path="res://Objects/frogger_map_manager.gd" id="1_65c0c"]
+
+[node name="FroggerMapManager" type="Node"]
+script = ExtResource("1_65c0c")
+
+[node name="RespawnTimer" type="Timer" parent="."]
+one_shot = true
