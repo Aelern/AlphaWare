@@ -1,0 +1,2 @@
+class_name Bowman
+extends CharacterBody2D

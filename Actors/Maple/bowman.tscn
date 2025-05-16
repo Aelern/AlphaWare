@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtwt4cieh17sy"]
+
+[ext_resource type="Script" uid="uid://rx8hkw6n4ayy" path="res://Actors/Maple/bowman.gd" id="1_bly47"]
+
+[node name="Bowman" type="CharacterBody2D"]
+script = ExtResource("1_bly47")

@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://kyjpre4ywwgu" path="res://Actors/Frogger/lily_pad.tscn" id="6_lxtnt"]
 [ext_resource type="PackedScene" uid="uid://bd7ynsta2rllr" path="res://Actors/Frogger/car_spawner.tscn" id="8_414j2"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kfjyb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2hpnx"]
 texture = ExtResource("3_w7ar1")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
@@ -21,7 +21,7 @@ texture_region_size = Vector2i(48, 48)
 
 [sub_resource type="TileSet" id="TileSet_ujlhf"]
 tile_size = Vector2i(48, 48)
-sources/0 = SubResource("TileSetAtlasSource_kfjyb")
+sources/0 = SubResource("TileSetAtlasSource_2hpnx")
 
 [node name="Frogger" type="Control" node_paths=PackedStringArray("map_manager")]
 layout_mode = 3
