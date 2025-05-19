@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://hbvw22o20pps"]
+[gd_scene load_steps=7 format=4 uid="uid://hbvw22o20pps"]
 
 [ext_resource type="Script" uid="uid://dbc1ynackruux" path="res://Levels/microgame.gd" id="1_j036s"]
 [ext_resource type="Texture2D" uid="uid://idfvwmcrc814" path="res://Assets/brick_bg.png" id="2_peun0"]
 [ext_resource type="Texture2D" uid="uid://3mvlmmyhn6pb" path="res://Assets/brick_terrain.png" id="3_55hat"]
+[ext_resource type="PackedScene" uid="uid://dtwt4cieh17sy" path="res://Actors/Maple/bowman.tscn" id="4_104fx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_104fx"]
 resource_name = "sewer_bricks"
@@ -29,6 +30,7 @@ script = ExtResource("1_j036s")
 metadata/_custom_type_script = "uid://dbc1ynackruux"
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 0
 offset_right = 864.0
 offset_bottom = 432.0
 
@@ -47,3 +49,6 @@ stretch_mode = 1
 position = Vector2(0, 16)
 tile_map_data = PackedByteArray("AAAAAAwAAQAAAAAAAAABAAwAAQAAAAAAAAACAAwAAQAAAAAAAAADAAwAAQAAAAAAAAAEAAwAAQAAAAAAAAAFAAwAAQAAAAAAAAAGAAwAAQAAAAAAAAAHAAwAAQAAAAAAAAAIAAwAAQAAAAAAAAAJAAwAAQAAAAAAAAAKAAwAAQAAAAAAAAALAAwAAQAAAAAAAAAMAAwAAQAAAAAAAAANAAwAAQAAAAAAAAAOAAwAAQAAAAAAAAAPAAwAAQAAAAAAAAAQAAwAAQAAAAAAAAARAAwAAQAAAAAAAAASAAwAAQAAAAAAAAATAAwAAQAAAAAAAAAUAAwAAQAAAAAAAAAVAAwAAQAAAAAAAAAWAAwAAQAAAAAAAAAXAAwAAQAAAAAAAAAYAAwAAQAAAAAAAAAZAAwAAQAAAAAAAAAaAAwAAQAAAAAAAAAaAAsAAQABAAEAAAAaAAoAAQABAAEAAAAaAAkAAQABAAEAAAAaAAgAAQABAAEAAAAaAAcAAQABAAEAAAAaAAYAAQABAAEAAAAaAAUAAQABAAEAAAAaAAQAAQABAAEAAAAaAAMAAQABAAEAAAAaAAIAAQABAAEAAAAaAAEAAQABAAEAAAAaAAAAAQABAAEAAAAaAP//AQABAAEAAAAAAP//AQABAAAAAAABAP//AQABAAAAAAACAP//AQABAAAAAAADAP//AQABAAAAAAAEAP//AQABAAAAAAAFAP//AQABAAAAAAAGAP//AQABAAAAAAAHAP//AQABAAAAAAAIAP//AQABAAAAAAAJAP//AQABAAAAAAAKAP//AQABAAAAAAALAP//AQABAAAAAAAMAP//AQABAAAAAAANAP//AQABAAAAAAAOAP//AQABAAAAAAAPAP//AQABAAAAAAAQAP//AQAAAAEAAAD//wwAAQAAAAEAAAD//wsAAQAAAAEAAAD//woAAQAAAAEAAAD//wkAAQAAAAEAAAD//wgAAQAAAAEAAAD//wcAAQAAAAEAAAD//wYAAQAAAAEAAAD//wUAAQAAAAEAAAD//wQAAQAAAAEAAAD//wMAAQAAAAEAAAD//wIAAQAAAAEAAAD//wEAAQAAAAEAAAD//wAAAQAAAAEAAAD/////AQAAAAEAAAA=")
 tile_set = SubResource("TileSet_vwf3m")
+
+[node name="Bowman" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_104fx")]
+position = Vector2(736, 352)

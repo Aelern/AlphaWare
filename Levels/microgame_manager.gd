@@ -31,9 +31,11 @@ func load_game_list():
 	microgame_list.append("res://Levels/pinball.tscn")
 	microgame_list.append("res://Levels/rc_car_maze.tscn")
 	microgame_list.append("res://Levels/frogger.tscn")
+	microgame_list.append("res://Levels/maple.tscn")
+	#microgame_list.append()
 
 func load_test_game_list():
-	microgame_list.append("res://Levels/frogger.tscn")
+	microgame_list.append("res://Levels/maple.tscn")
 
 func game_was_lost():
 	print("FAILURE (awww)")

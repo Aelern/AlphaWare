@@ -1,6 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtwt4cieh17sy"]
+[gd_scene load_steps=7 format=3 uid="uid://dtwt4cieh17sy"]
 
 [ext_resource type="Script" uid="uid://rx8hkw6n4ayy" path="res://Actors/Maple/bowman.gd" id="1_bly47"]
+[ext_resource type="Texture2D" uid="uid://c4jcrica41wew" path="res://Assets/stick_figure.png" id="2_clwwb"]
+[ext_resource type="Script" uid="uid://ccd00snf85m7l" path="res://Components/hurtbox_component.gd" id="3_nahg4"]
+[ext_resource type="Script" uid="uid://dxm87v2vccskn" path="res://Components/spawner_component.gd" id="4_nahg4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nahg4"]
+size = Vector2(32, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6by0"]
+radius = 16.0
+height = 96.0
 
 [node name="Bowman" type="CharacterBody2D"]
 script = ExtResource("1_bly47")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_clwwb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_nahg4")
+debug_color = Color(0.250999, 0.635327, 0, 0.42)
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+script = ExtResource("3_nahg4")
+metadata/_custom_type_script = "uid://ccd00snf85m7l"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CapsuleShape2D_e6by0")
+
+[node name="ArrowSpawner" type="Node2D" parent="."]
+position = Vector2(-24, 0)
+script = ExtResource("4_nahg4")
+metadata/_custom_type_script = "uid://dxm87v2vccskn"

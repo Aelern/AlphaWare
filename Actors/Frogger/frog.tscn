@@ -75,3 +75,4 @@ metadata/_custom_type_script = "uid://dhi7jl4m0bqmc"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_p30ig")
+debug_color = Color(0.997056, 0, 0.174189, 0.42)
