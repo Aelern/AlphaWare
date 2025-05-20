@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://bwxmkusnxalb3"]
+
+[ext_resource type="Texture2D" uid="uid://bpa7hobae582e" path="res://Assets/arrow.png" id="1_gyjr5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyjr5"]
+atlas = ExtResource("1_gyjr5")
+region = Rect2(0, 0, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lsuf"]
+atlas = ExtResource("1_gyjr5")
+region = Rect2(32, 0, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uv0w"]
+atlas = ExtResource("1_gyjr5")
+region = Rect2(64, 0, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eonvq"]
+atlas = ExtResource("1_gyjr5")
+region = Rect2(64, 0, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cluhe"]
+atlas = ExtResource("1_gyjr5")
+region = Rect2(96, 0, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yljj"]
+atlas = ExtResource("1_gyjr5")
+region = Rect2(0, 8, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t62he"]
+atlas = ExtResource("1_gyjr5")
+region = Rect2(32, 8, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnq4i"]
+atlas = ExtResource("1_gyjr5")
+region = Rect2(64, 8, 32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5lcn"]
+atlas = ExtResource("1_gyjr5")
+region = Rect2(96, 8, 32, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a3uk0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyjr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lsuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uv0w")
+}],
+"loop": false,
+"name": &"appear",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eonvq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cluhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yljj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t62he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnq4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5lcn")
+}],
+"loop": false,
+"name": &"impact",
+"speed": 8.0
+}]
+
+[node name="Arrow" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a3uk0")
+animation = &"appear"
+autoplay = "appear"

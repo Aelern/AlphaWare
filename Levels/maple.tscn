@@ -51,4 +51,4 @@ tile_map_data = PackedByteArray("AAAAAAwAAQAAAAAAAAABAAwAAQAAAAAAAAACAAwAAQAAAAA
 tile_set = SubResource("TileSet_vwf3m")
 
 [node name="Bowman" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_104fx")]
-position = Vector2(736, 352)
+position = Vector2(720, 352)
