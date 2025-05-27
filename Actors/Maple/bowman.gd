@@ -1,15 +1,17 @@
 class_name Bowman
 extends CharacterBody2D
 
+@onready var animated_sprite = $AnimatedSprite2D
+
 @export var top_speed = 200
 @export var acceleration = 2000
-@export var deceleration = 5000
-@export var jump_speed = 390
+@export var deceleration = 6000
+@export var jump_speed = 420
 @export var gravity = 1200
 @export var terminal_velocity = 1200
 
 var own_speed: Vector2
-var facing_right = false
+var facing_right = true
 
 enum States {GROUND, AIR, ATTACK, HITSTUN}
 var player_state = States.GROUND
@@ -38,8 +40,12 @@ func grounded_state(delta: float):
 		own_speed.x = clamp(own_speed.x + acceleration * dir * delta, top_speed * -1, top_speed)
 		if dir == 1 and not facing_right:
 			facing_right = true
+			animated_sprite.flip_h = false
+			own_speed.x = clamp(own_speed.x + deceleration * dir * delta, top_speed * -1, top_speed)
 		elif dir == -1 and facing_right:
 			facing_right = false		
+			animated_sprite.flip_h = true
+			own_speed.x = clamp(own_speed.x + deceleration * dir * delta, top_speed * -1, top_speed)
 	else:
 		if own_speed.x > 0:
 			own_speed.x = clamp(own_speed.x - deceleration * delta, 0, top_speed)

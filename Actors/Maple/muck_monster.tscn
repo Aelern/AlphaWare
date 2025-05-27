@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx3aqhtdaanru"]
+
+[ext_resource type="Texture2D" uid="uid://ddlbehlo4keyf" path="res://Assets/muck_main_body.png" id="1_60de8"]
+[ext_resource type="Script" uid="uid://dhi7jl4m0bqmc" path="res://Components/hitbox_component.gd" id="2_lvyhv"]
+[ext_resource type="Script" uid="uid://ccd00snf85m7l" path="res://Components/hurtbox_component.gd" id="3_h2h7c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rlp11"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_60de8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MuckMonster" type="RigidBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rlp11")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("2_lvyhv")
+metadata/_custom_type_script = "uid://dhi7jl4m0bqmc"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitboxComponent"]
+visible = false
+polygon = PackedVector2Array(-24, -16, 16, -48, 48, -88, 104, -104, 144, -96, 168, -80, 168, -56, 152, -32, 144, -8, 152, 40, 168, 56, 176, 96, 160, 144, -216, 144, -216, 8, -128, -8, -80, 0)
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+script = ExtResource("3_h2h7c")
+metadata/_custom_type_script = "uid://ccd00snf85m7l"
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="HurtboxComponent"]
+visible = false
+polygon = PackedVector2Array(-24, -16, 16, -48, 48, -88, 104, -104, 144, -96, 168, -80, 168, -56, 152, -32, 144, -8, 152, 40, 168, 56, 176, 96, 160, 144, -216, 144, -216, 8, -128, -8, -80, 0)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://bwxmkusnxalb3"]
+[gd_scene load_steps=13 format=3 uid="uid://bwxmkusnxalb3"]
 
+[ext_resource type="Script" uid="uid://c52imcp8881sn" path="res://Actors/Maple/arrow.gd" id="1_2lsuf"]
 [ext_resource type="Texture2D" uid="uid://bpa7hobae582e" path="res://Assets/arrow.png" id="1_gyjr5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gyjr5"]
@@ -84,8 +85,11 @@ animations = [{
 }]
 
 [node name="Arrow" type="Node2D"]
+script = ExtResource("1_2lsuf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a3uk0")
 animation = &"appear"
 autoplay = "appear"
+frame = 2
+frame_progress = 1.0
