@@ -1,37 +1,95 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx3aqhtdaanru"]
+[gd_scene load_steps=13 format=3 uid="uid://cx3aqhtdaanru"]
 
 [ext_resource type="Texture2D" uid="uid://ddlbehlo4keyf" path="res://Assets/muck_main_body.png" id="1_60de8"]
 [ext_resource type="Script" uid="uid://dhi7jl4m0bqmc" path="res://Components/hitbox_component.gd" id="2_lvyhv"]
 [ext_resource type="Script" uid="uid://ccd00snf85m7l" path="res://Components/hurtbox_component.gd" id="3_h2h7c"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_rlp11"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvyhv"]
+atlas = ExtResource("1_60de8")
+region = Rect2(0, 0, 432, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2h7c"]
+atlas = ExtResource("1_60de8")
+region = Rect2(432, 0, 432, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15vaq"]
+atlas = ExtResource("1_60de8")
+region = Rect2(0, 672, 432, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ggvd"]
+atlas = ExtResource("1_60de8")
+region = Rect2(432, 672, 432, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw2bs"]
+atlas = ExtResource("1_60de8")
+region = Rect2(0, 1008, 432, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa017"]
+atlas = ExtResource("1_60de8")
+region = Rect2(0, 0, 432, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4hl5"]
+atlas = ExtResource("1_60de8")
+region = Rect2(432, 0, 432, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_228sd"]
+atlas = ExtResource("1_60de8")
+region = Rect2(0, 336, 432, 336)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4d5jb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_60de8")
+"texture": SubResource("AtlasTexture_lvyhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2h7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15vaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ggvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw2bs")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pa017")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4hl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_228sd")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
-[node name="MuckMonster" type="RigidBody2D"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_rlp11")
+[node name="MuckMonster" type="StaticBody2D"]
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 script = ExtResource("2_lvyhv")
 metadata/_custom_type_script = "uid://dhi7jl4m0bqmc"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitboxComponent"]
-visible = false
-polygon = PackedVector2Array(-24, -16, 16, -48, 48, -88, 104, -104, 144, -96, 168, -80, 168, -56, 152, -32, 144, -8, 152, 40, 168, 56, 176, 96, 160, 144, -216, 144, -216, 8, -128, -8, -80, 0)
+polygon = PackedVector2Array(-216, 24, -88, 24, 8, -136, 168, -136, 168, 168, -216, 168)
 
 [node name="HurtboxComponent" type="Area2D" parent="."]
 script = ExtResource("3_h2h7c")
 metadata/_custom_type_script = "uid://ccd00snf85m7l"
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="HurtboxComponent"]
-visible = false
-polygon = PackedVector2Array(-24, -16, 16, -48, 48, -88, 104, -104, 144, -96, 168, -80, 168, -56, 152, -32, 144, -8, 152, 40, 168, 56, 176, 96, 160, 144, -216, 144, -216, 8, -128, -8, -80, 0)
+polygon = PackedVector2Array(-216, 24, -88, 24, 8, -136, 168, -136, 168, 168, -216, 168)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4d5jb")
+autoplay = "default"
+frame_progress = 0.896982

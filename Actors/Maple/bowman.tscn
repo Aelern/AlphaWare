@@ -48,9 +48,9 @@ region = Rect2(96, 0, 48, 96)
 atlas = ExtResource("4_e6by0")
 region = Rect2(144, 0, 48, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bk3y4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nahg4"]
 atlas = ExtResource("4_e6by0")
-region = Rect2(0, 0, 48, 96)
+region = Rect2(0, 96, 48, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s5hh6"]
 animations = [{
@@ -101,7 +101,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_oysll")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bk3y4")
+"texture": SubResource("AtlasTexture_nahg4")
 }],
 "loop": true,
 "name": &"walk",
@@ -130,8 +130,8 @@ metadata/_custom_type_script = "uid://dxm87v2vccskn"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s5hh6")
-animation = &"shoot"
+animation = &"walk"
 autoplay = "default"
-frame_progress = 0.365582
+frame_progress = 0.147769
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

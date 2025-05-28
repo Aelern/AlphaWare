@@ -74,4 +74,4 @@ position = Vector2(768, 184)
 position = Vector2(680, 208)
 
 [node name="MuckMonster" parent="SubViewportContainer/SubViewport" instance=ExtResource("6_ghhwy")]
-position = Vector2(216, 256)
+position = Vector2(216, 232)

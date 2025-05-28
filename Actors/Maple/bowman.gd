@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
 
-@export var top_speed = 200
+@export var top_speed = 175
 @export var acceleration = 2000
 @export var deceleration = 6000
 @export var jump_speed = 420
@@ -37,6 +37,8 @@ func grounded_state(delta: float):
 	if Input.is_action_pressed("right"):
 		dir = dir + 1
 	if dir != 0:
+		if animated_sprite.animation == "default":
+			animated_sprite.play("walk")
 		own_speed.x = clamp(own_speed.x + acceleration * dir * delta, top_speed * -1, top_speed)
 		if dir == 1 and not facing_right:
 			facing_right = true
@@ -47,6 +49,8 @@ func grounded_state(delta: float):
 			animated_sprite.flip_h = true
 			own_speed.x = clamp(own_speed.x + deceleration * dir * delta, top_speed * -1, top_speed)
 	else:
+		if animated_sprite.animation == "walk":
+			animated_sprite.play("default")
 		if own_speed.x > 0:
 			own_speed.x = clamp(own_speed.x - deceleration * delta, 0, top_speed)
 		elif own_speed.x < 0:
@@ -54,11 +58,14 @@ func grounded_state(delta: float):
 	if Input.is_action_just_pressed("action"):
 		own_speed.y = jump_speed * -1
 		player_state = States.AIR
+		animated_sprite.play("jump")
+		
 	velocity = own_speed
 
 func air_state(delta: float):
 	own_speed.y = clamp(own_speed.y + (gravity * delta), jump_speed * -2, terminal_velocity)
 	if is_on_floor():
+		animated_sprite.play("default")
 		player_state = States.GROUND
 		own_speed.y = 0
 	velocity = own_speed
