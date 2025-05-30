@@ -4,9 +4,11 @@ extends Node2D
 @onready var animated_sprite = $AnimatedSprite2D
 
 var target: Node2D
+var target_offset: Vector2
 var range:float = 600.0
 var speed = 400
 var moving = false
+var damage = 0
 
 func _ready() -> void:
 	animated_sprite.animation_finished.connect(animation_manager)
@@ -29,4 +31,5 @@ func animation_manager() -> void:
 		moving = true
 	elif animated_sprite.animation == "default":
 		animated_sprite.play("impact")
+		moving = false
 		animated_sprite.animation_finished.connect(queue_free)

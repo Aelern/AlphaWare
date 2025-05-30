@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bwxmkusnxalb3"]
+[gd_scene load_steps=14 format=3 uid="uid://bwxmkusnxalb3"]
 
 [ext_resource type="Script" uid="uid://c52imcp8881sn" path="res://Actors/Maple/arrow.gd" id="1_2lsuf"]
 [ext_resource type="Texture2D" uid="uid://bpa7hobae582e" path="res://Assets/arrow.png" id="1_gyjr5"]
+[ext_resource type="Script" uid="uid://dhi7jl4m0bqmc" path="res://Components/hitbox_component.gd" id="3_4uv0w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gyjr5"]
 atlas = ExtResource("1_gyjr5")
@@ -93,3 +94,9 @@ animation = &"appear"
 autoplay = "appear"
 frame = 2
 frame_progress = 1.0
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_4uv0w")
+metadata/_custom_type_script = "uid://dhi7jl4m0bqmc"

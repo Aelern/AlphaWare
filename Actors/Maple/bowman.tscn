@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://dtwt4cieh17sy"]
+[gd_scene load_steps=19 format=3 uid="uid://dtwt4cieh17sy"]
 
 [ext_resource type="Script" uid="uid://rx8hkw6n4ayy" path="res://Actors/Maple/bowman.gd" id="1_bly47"]
 [ext_resource type="Script" uid="uid://ccd00snf85m7l" path="res://Components/hurtbox_component.gd" id="3_nahg4"]
 [ext_resource type="Texture2D" uid="uid://dax7c50hvf0u1" path="res://Assets/bowman.png" id="4_e6by0"]
 [ext_resource type="Script" uid="uid://dxm87v2vccskn" path="res://Components/spawner_component.gd" id="4_nahg4"]
+[ext_resource type="Script" uid="uid://banhsx52is1se" path="res://Components/targetbox_component.gd" id="5_e6by0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nahg4"]
 size = Vector2(32, 32)
@@ -123,6 +124,13 @@ metadata/_custom_type_script = "uid://ccd00snf85m7l"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("CapsuleShape2D_e6by0")
 
+[node name="TargetboxComponent" type="Area2D" parent="."]
+script = ExtResource("5_e6by0")
+metadata/_custom_type_script = "uid://banhsx52is1se"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TargetboxComponent"]
+polygon = PackedVector2Array(72, -16, 480, -96, 480, 96, 72, 32)
+
 [node name="ArrowSpawner" type="Node2D" parent="."]
 position = Vector2(-24, 0)
 script = ExtResource("4_nahg4")
@@ -130,8 +138,6 @@ metadata/_custom_type_script = "uid://dxm87v2vccskn"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s5hh6")
-animation = &"walk"
 autoplay = "default"
-frame_progress = 0.147769
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
