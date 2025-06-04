@@ -87,7 +87,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ivmtg")
 }],
-"loop": true,
+"loop": false,
 "name": &"shoot",
 "speed": 8.0
 }, {
@@ -138,6 +138,7 @@ metadata/_custom_type_script = "uid://dxm87v2vccskn"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s5hh6")
+animation = &"shoot"
 autoplay = "default"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -56,22 +56,22 @@ tile_set = SubResource("TileSet_vwf3m")
 [node name="Platforms" type="Node" parent="SubViewportContainer/SubViewport"]
 
 [node name="MaplePlatform" parent="SubViewportContainer/SubViewport/Platforms" instance=ExtResource("5_vwf3m")]
-position = Vector2(592, 328)
+position = Vector2(584, 328)
 
 [node name="MaplePlatform2" parent="SubViewportContainer/SubViewport/Platforms" instance=ExtResource("5_vwf3m")]
-position = Vector2(768, 328)
+position = Vector2(760, 328)
 
 [node name="MaplePlatform3" parent="SubViewportContainer/SubViewport/Platforms" instance=ExtResource("5_vwf3m")]
-position = Vector2(680, 256)
+position = Vector2(672, 256)
 
 [node name="MaplePlatform4" parent="SubViewportContainer/SubViewport/Platforms" instance=ExtResource("5_vwf3m")]
-position = Vector2(592, 184)
+position = Vector2(584, 184)
 
 [node name="MaplePlatform5" parent="SubViewportContainer/SubViewport/Platforms" instance=ExtResource("5_vwf3m")]
-position = Vector2(768, 184)
+position = Vector2(760, 184)
 
 [node name="Bowman" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_104fx")]
-position = Vector2(680, 208)
+position = Vector2(672, 208)
 
 [node name="MuckMonster" parent="SubViewportContainer/SubViewport" instance=ExtResource("6_ghhwy")]
 position = Vector2(216, 232)
